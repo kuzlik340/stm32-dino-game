@@ -15,12 +15,8 @@ void button_init(){
 }
 
 int isbutton_clicked(){
-    int isClicked = 0;
-    for(int i = 100; i > 0; i++){
-       if(isClicked == 1){
-        return 1;
-       }
-       isClicked = (GPIOA->IDR & BTN_PIN);
-    }
-    return 0;
+    int isClicked = 1;
+    isClicked = !(GPIOA->IDR & BTN_PIN);
+    
+    return isClicked;
 }

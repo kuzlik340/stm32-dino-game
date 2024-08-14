@@ -153,7 +153,7 @@ void delay(volatile int x)
 void jump_dino(int *gg)
 {
     int y = 32;
-    for (y; y > 10; y--)
+    for (y; y > 3; y-=3)
     {
         drawBitMapBuffer(10, y, dino1, 26, 25);
         drawStars();
@@ -162,8 +162,20 @@ void jump_dino(int *gg)
         *gg -= 3;
         updateDisplay();
         clear_buffer();
+       
     }
-    for (y; y < 33; y++)
+    for(int x = 0; x < 8; x++){
+        drawBitMapBuffer(10, y, dino1, 26, 25);
+        drawStars();
+        draw_horizon();
+        drawBitMapBuffer(*gg, 32, tree1, 23, 11);
+        *gg -= 3;
+        updateDisplay();
+        clear_buffer();
+        
+    }
+
+    for (y; y < 33; y+=3)
     {
         drawBitMapBuffer(10, y, dino1, 26, 25);
         drawStars();
@@ -172,6 +184,7 @@ void jump_dino(int *gg)
         *gg -= 3;
         updateDisplay();
         clear_buffer();
+        
     }
 }
 
@@ -201,11 +214,11 @@ int main()
     int ghg = 0;
     while (1)
     {   
-
-        delay(10000);
-        if (!(isbutton_clicked()))
+        
+        if ((isbutton_clicked()))
         {   
             jump_dino(&gg);
+            systickDelayMs(10);
         }
         else
         {
