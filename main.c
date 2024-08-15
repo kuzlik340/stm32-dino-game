@@ -15,6 +15,8 @@
 
 int dead = 1;
 
+
+
 void draw_horizon()
 {
     for (int x = 0; x < 128; x++)
@@ -45,6 +47,35 @@ void dead_dino(int gg, int y){
 }
 
 
+int max(int x1, int x2){
+    return (x1 > x2 ? x1 : x2);
+}
+
+int min(int x1, int x2){
+    return (x1 < x2 ? x1 : x2);
+}
+
+int rectangles_overlap(int x1, int y1, int width1, int height1, 
+                       int x2, int y2, int width2, int height2) {
+    return !(x1 + width1 < x2 || 
+             x2 + width2 < x1 || 
+             y1 + height1 < y2 || 
+             y2 + height2 < y1);
+}
+
+
+
+int bitmaps_collide(int width1, int height1, int x1, int y1, int width2, int height2, int x2, int y2) {
+    // Сначала проверим пересечение прямоугольников
+    if (!rectangles_overlap(x1, y1, width1, height1, x2, y2, width2, height2)) {
+        return 0;
+    }
+    
+
+    return 0; // Коллизии нет
+}
+
+
 void jump_dino(int *gg)
 {
     int y = 32;
@@ -58,10 +89,11 @@ void jump_dino(int *gg)
         *gg -= 3;
         updateDisplay();
         clear_buffer();
-        if(*gg >= 20 && *gg <=34 && y >= 7){
+        if(rectangles_overlap(12, y, 15, 15, *gg, 32, 11, 23)){
            dead_dino(*gg, y);
            break;
         }
+       
     }
     if(!dead){
         return;
@@ -89,8 +121,8 @@ void jump_dino(int *gg)
         *gg -= 3;
         updateDisplay();
         clear_buffer();
-        if(*gg >= 10 && *gg <=34 && y >= 7){
-           dead_dino(*gg, y);
+        if(rectangles_overlap(12, y, 15, 15, *gg, 32, 11, 23)){
+            dead_dino(*gg, y);
            break;
         }
         
