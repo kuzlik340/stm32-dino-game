@@ -1,5 +1,4 @@
 #include "SSD1306.h"
-#include <stdint.h>
 #include <i2c.h>
 #define SSD1306_I2C_ADDR 0x3C /*I2C addres of the device on bus*/
 #define SSD1306_COMMAND 0x00  /*Memory base for commands for OLED display*/
@@ -9,7 +8,7 @@
 #define SSD1306_HEIGHT 64 /*height in pixels*/
 
 /*buffer that will have all bits set as the pixels on the display*/
-static uint8_t buffer[SSD1306_WIDTH * SSD1306_HEIGHT / 8];
+static char buffer[SSD1306_WIDTH * SSD1306_HEIGHT / 8];
 void clear_buffer(){
     for(int i = 0; i < SSD1306_WIDTH * SSD1306_HEIGHT / 8; i++){
        buffer[i] = 0;
@@ -21,7 +20,7 @@ void clear_buffer(){
 void SSD1306_clear(void)
 {
     char clearData[128] = {0}; /*array with zero`s*/
-    for (uint8_t page = 0; page < 8; page++)
+    for (char page = 0; page < 8; page++)
     {
         char commands[3];
         /* Set page address*/
