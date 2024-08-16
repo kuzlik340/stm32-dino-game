@@ -116,18 +116,18 @@ void drawBitMapBuffer(int x, int y, const char *bitMap, int height, int width)
     {
         for (int col = 0; col < width; col++)
         {
-            // Рассчитываем индекс байта и бит в битмапе
+            /*Calculating index of byte and an index of bit in byte*/
             int byteIndex = (col / 8) + row * bytesPerRow;
             int bitOffset = col % 8;
 
-            // Получаем бит из битмапа
+            /*getting the bit from bitmap*/
             char bit = (bitMap[byteIndex] >> (7 - bitOffset)) & 1;
 
-            // Рассчитываем координаты пикселя на дисплее
+            /*Calculating the coordinates*/
             int pixelX = x + col;
             int pixelY = y + row;
 
-            // Устанавливаем пиксель в буфере
+            /*Setting pixel in the buffer*/
             if (bit)
             {
                 setPixel(pixelX, pixelY, 1);
