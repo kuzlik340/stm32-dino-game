@@ -2,7 +2,7 @@
 
 ## Introduction
 
-**STM32 Dino Game** is a minimalist and fully functional recreation of the iconic Chrome dinosaur game, implemented entirely in C for STM32F411 microcontroller. The main idea of this project was to write this code without even standard libraries. So, only stm32f411xe was used. In this library are only predefined memory and nothing more.
+**STM32 Dino Game** is a minimalist and fully functional recreation of the Chrome dinosaur game, implemented entirely in C for STM32F411 microcontroller. The main idea of this project was to write this code without even standard libraries. So, only stm32f411xe was used(this library conatins only predefined structures of registers in the stm32f411). 
 
 
 ## Wiring
