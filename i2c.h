@@ -1,3 +1,10 @@
+/*
+ * i2c.h  v1.0
+ *
+ * module for I2C transmission
+ *
+ * T.Kuz    8.2024
+ */
 #ifndef I2C_H
 #define I2C_H
 void i2c_init();

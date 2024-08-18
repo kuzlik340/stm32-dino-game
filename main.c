@@ -1,21 +1,20 @@
+/*
+ * main.c  v1.0
+ *
+ * main part of code
+ *
+ * T.Kuz    8.2024
+ */
 #include "i2c.h"
 #include "SSD1306.h"
 #include "button.h"
 #include "systick.h"
 #include "bitmaps.h"
 
-#define LED_PIN_LOW (1U << 29)
-#define LED_PIN_HIGH (1U << 13)
-
-#define PIN13 (1U << 13)
-#define LED_PIN PIN13
-
 #define GPIOAEN (1U << 0)
 #define GPIOCEN (1U << 2)
 
 int dead = 1;
-
-
 
 void draw_horizon()
 {
@@ -61,18 +60,6 @@ int rectangles_overlap(int x1, int y1, int width1, int height1,
              x2 + width2 < x1 || 
              y1 + height1 < y2 || 
              y2 + height2 < y1);
-}
-
-
-
-int bitmaps_collide(int width1, int height1, int x1, int y1, int width2, int height2, int x2, int y2) {
-    // Сначала проверим пересечение прямоугольников
-    if (!rectangles_overlap(x1, y1, width1, height1, x2, y2, width2, height2)) {
-        return 0;
-    }
-    
-
-    return 0; // Коллизии нет
 }
 
 
