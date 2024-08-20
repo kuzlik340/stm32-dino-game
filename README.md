@@ -9,7 +9,7 @@
 On the blackpill v2.0 board we have the button that is connected to the PA0, so we will use this button with pull up resistors enabled on microcontroller. As I2C interface for the display we will use PB6 as SCL and PB7 as SDA.
 
 ## Project
-All project is done by modules. i2c.h is used for transmitting data and commands to display by i2c bus. SSD1306.h has all the functions for showing bitmaps and pixels on display. button.h contains function that is returning button state. systick.h is used for the delay by microcontroller clock generator. bitmaps.h have all the bitmaps that are used in this project
+All project is done by modules. I2c.h is used for transmitting data and commands to display by i2c bus. SSD1306.h has all the functions for showing bitmaps and pixels on display. Button.h contains function that is returning button state. Systick.h is used for the delay by microcontroller clock. Bitmaps.h have all the bitmaps that are used in this project
 
 ## How to run code
 1. Download the code from this repository and open it in stm32CubeIDE
