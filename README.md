@@ -17,3 +17,4 @@ All project is done by modules. i2c.h is used for transmitting data and commands
 3. Run the code on your microcontroller :)
 
 ## Screens
+![IMG_3260 (1)](https://github.com/user-attachments/assets/18e70cb2-4bcf-48c3-ac7d-1bf50a464982)
