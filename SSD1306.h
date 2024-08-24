@@ -1,3 +1,10 @@
+/*
+ * SSD1306.h   v1.0
+ *
+ * contains functions to show pixels on display
+ *
+ * T.Kuz    8.2024
+ */
 #ifndef SSD1306__H
 #define SSD1306__H
 void SSD1306_clear(void);

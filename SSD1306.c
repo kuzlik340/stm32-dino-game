@@ -1,5 +1,12 @@
+/*
+ * SSD1306.c   v1.0
+ *
+ * contains functions to show pixels on display
+ *
+ * T.Kuz    8.2024
+ */
 #include "SSD1306.h"
-#include <i2c.h>
+#include "i2c.h"
 #define SSD1306_I2C_ADDR 0x3C /*I2C addres of the device on bus*/
 #define SSD1306_COMMAND 0x00  /*Memory base for commands for OLED display*/
 #define SSD1306_DATA 0x40     /*Memory base for data(GPDDR) for OLED display*/

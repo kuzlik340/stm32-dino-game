@@ -1,3 +1,10 @@
+/*
+ * systick.c   v1.0
+ *
+ * contains functions for delay by external (on board) clock generator
+ *
+ * T.Kuz    8.2024
+ */
 #include "stm32f4xx.h"
 #include "systick.h"
 
