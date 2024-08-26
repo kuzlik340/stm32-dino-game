@@ -10,17 +10,30 @@
 #include "button.h"
 #include "systick.h"
 #include "bitmaps.h"
+#include "adc.h"
+
 
 #define GPIOAEN (1U << 0)
 #define GPIOCEN (1U << 2)
 
-int dead = 1;
+int alive = 1;
 
 void draw_horizon()
 {
     for (int x = 0; x < 128; x++)
     {
         setPixel(x, 55, 1);
+    }
+}
+
+char random (){
+    start_conversion();
+    int x = adc_read()+1;
+    if(x < 128){
+        return 50 + x;
+    }
+    else{
+        return (adc_read()+1);
     }
 }
 
@@ -42,7 +55,7 @@ void dead_dino(int gg, int y){
     drawBitMapBuffer(10, y, dead_dino_bitMap, 26, 25);
     updateDisplay();
     clear_buffer();
-    dead = 0;
+    alive = 0;
 }
 
 
@@ -82,7 +95,7 @@ void jump_dino(int *gg)
         }
        
     }
-    if(!dead){
+    if(!alive){
         return;
     }
     
@@ -131,15 +144,18 @@ void draw_dino(){
     dd++;
 }
 
+
+
 int main()
 {
     i2c_init();
     SSD1306_init(); // Initialize the OLED display
     SSD1306_clear();
     button_init();
-
+    pa1_adc_init();
     int gg = 126;
-    while (dead)
+    game:
+    while (alive)
     {   
         
         if ((isbutton_clicked()))
@@ -165,10 +181,14 @@ int main()
                 clear_buffer();
                 break;
             }
-            if (gg < -60)
+            if (gg < 10)
             {
-                gg = 126;
+                gg = 2*(random());
             }
         }
     }
+    systickDelayMs(2000);
+    while(!isbutton_clicked()){  
+    }
+    goto game;
 }
