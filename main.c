@@ -16,6 +16,21 @@
 #define GPIOAEN (1U << 0)
 #define GPIOCEN (1U << 2)
 
+
+void draw_horizon();
+char random();
+void drawStars();
+void dead_dino(int gg, int y);
+int max(int x1, int x2);
+int min(int x1, int x2);
+int rectangles_overlap(int x1, int y1, int width1, int height1,
+                       int x2, int y2, int width2, int height2);
+void jump_dino(int *gg);
+void restart_game();
+void draw_dino();
+void game();
+void setup();
+
 int alive = 1;
 
 void draw_horizon()
@@ -51,6 +66,7 @@ void dead_dino(int gg, int y){
     updateDisplay();
     clear_buffer();
     alive = 0;
+    restart_game();
 }
 
 
@@ -159,13 +175,8 @@ void game(){
             draw_dino();
             updateDisplay();
             clear_buffer();
-            if(gg <= 34 && gg>=20){
-                drawStars();
-                draw_horizon();
-                drawBitMapBuffer(gg, 32, tree1_bitMap, 23, 11);
-                drawBitMapBuffer(10, 32, dead_dino_bitMap, 26, 25);
-                updateDisplay();
-                clear_buffer();
+            if(gg <= 34 && gg>=10){
+                dead_dino(gg, 32);
                 break;
             }
             int x = random();
@@ -182,12 +193,26 @@ void game(){
     }
 }
 
+
+void restart_game(){
+    systickDelayMs(1500);
+    while(!isbutton_clicked());
+    alive = 1;
+    systickDelayMs(100);
+    game();
+}
+
 void setup(){
     i2c_init();
+    systickDelayMs(10);
     SSD1306_init(); // Initialize the OLED display
+    systickDelayMs(10);
     SSD1306_clear();
+    systickDelayMs(10);
     button_init();
+    systickDelayMs(10);
     pa1_adc_init();
+    systickDelayMs(10);
 }
 
 int main()
