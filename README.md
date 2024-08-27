@@ -4,6 +4,10 @@
 
 **STM32 Dino Game** is a minimalist and fully functional recreation of the Chrome dinosaur game, implemented entirely in C for STM32F411 microcontroller. The main idea of this project was to write this code without even standard libraries. So, only stm32f411xe was used(this library conatins only predefined structures of registers in the stm32f411). 
 
+## Parts used in this project
+1. OLED SSD1306 screen
+2. Blackpill v 2.0 board
+3. Wires
 
 ## Wiring
 On the blackpill v2.0 board we have the button that is connected to the PA0, so we will use this button with pull up resistors enabled on microcontroller. As I2C interface for the display we will use PB6 as SCL and PB7 as SDA.
@@ -14,7 +18,7 @@ All project is done by modules. I2c.h is used for transmitting data and commands
 ## How to run code
 1. Download the code from this repository and open it in stm32CubeIDE
 2. Check all wiring!
-3. If you are using platfromio and as the board blackpill v.2.0 put in platformio.ini file this:
+3. If you are using platfromio and as the board blackpill v 2.0 put in platformio.ini file this:
 ```
 [env:blackpill_f411ce]
 platform = ststm32

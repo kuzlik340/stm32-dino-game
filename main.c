@@ -225,7 +225,7 @@ void setup(){
 void intro(){
     drawBitMapBuffer(30, 10, intro_bitMap, 49, 66);
     updateDisplay();
-    systickDelayMs(10000);
+    systickDelayMs(1200);
 }
 
 int main()
