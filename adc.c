@@ -1,3 +1,13 @@
+/*
+ * adc.c   v1.0
+ *
+ * Contains functions to work with onboard adc
+ * 
+ * In this project adc is used to create random number
+ *
+ * T.Kuz    8.2024
+ */
+
 #include        <stm32f411xe.h>
 #include        "adc.h"
 #define     ADC1EN          (1U<<8)
@@ -6,8 +16,6 @@
 #define     CR2_ADON        (1U<<0)
 #define     CR2_SWSTART     (1U<<30)
 #define     SR_EOC          (1U<<1)
-
-//configure pa1 as our adc pin
 
 
 void pa1_adc_init(){

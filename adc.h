@@ -1,3 +1,12 @@
+/*
+ * adc.h   v1.0
+ *
+ * Contains functions to work with onboard adc
+ * 
+ * In this project adc is used to create random number
+ *
+ * T.Kuz    8.2024
+ */
 #ifndef ADC_H_
 #define ADC_H_
 
