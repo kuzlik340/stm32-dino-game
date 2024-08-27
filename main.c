@@ -60,7 +60,7 @@ void drawStars()
 }
 
 void show_retry(){
-    drawBitMapBuffer(45, 10, retry_bitMap, 40,48);
+    drawBitMapBuffer(52, 18, retry_bitMap, 23,23);
     updateDisplay();
 }
 
@@ -222,8 +222,15 @@ void setup(){
     systickDelayMs(10);
 }
 
+void intro(){
+    drawBitMapBuffer(30, 10, intro_bitMap, 49, 66);
+    updateDisplay();
+    systickDelayMs(10000);
+}
+
 int main()
 {
     setup();
+    intro();
     game();
 }
