@@ -28,13 +28,8 @@ void draw_horizon()
 
 char random (){
     start_conversion();
-    int x = adc_read()+1;
-    if(x < 128){
-        return 50 + x;
-    }
-    else{
-        return (adc_read()+1);
-    }
+    return adc_read()+1;
+    
 }
 
 void drawStars()
@@ -145,16 +140,8 @@ void draw_dino(){
 }
 
 
-
-int main()
-{
-    i2c_init();
-    SSD1306_init(); // Initialize the OLED display
-    SSD1306_clear();
-    button_init();
-    pa1_adc_init();
-    int gg = 126;
-    game:
+void game(){
+    int gg = 160;
     while (alive)
     {   
         
@@ -181,14 +168,30 @@ int main()
                 clear_buffer();
                 break;
             }
+            int x = random();
             if (gg < 10)
             {
-                gg = 2*(random());
+                if (x>30){
+                    gg = 2*(30 + x);
+                }
+                else{
+                    gg = 2*(60 + x);
+                } 
             }
         }
     }
-    systickDelayMs(2000);
-    while(!isbutton_clicked()){  
-    }
-    goto game;
+}
+
+void setup(){
+    i2c_init();
+    SSD1306_init(); // Initialize the OLED display
+    SSD1306_clear();
+    button_init();
+    pa1_adc_init();
+}
+
+int main()
+{
+    setup();
+    game();
 }
