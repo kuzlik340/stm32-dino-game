@@ -30,6 +30,7 @@ void restart_game();
 void draw_dino();
 void game();
 void setup();
+void show_retry();
 
 int alive = 1;
 
@@ -58,14 +59,20 @@ void drawStars()
     setPixel(100, 10, 1);
 }
 
+void show_retry(){
+    drawBitMapBuffer(45, 10, retry_bitMap, 40,48);
+    updateDisplay();
+}
+
 void dead_dino(int gg, int y){
     drawStars();
     draw_horizon();
     drawBitMapBuffer(gg, 32, tree1_bitMap, 23, 11);
     drawBitMapBuffer(10, y, dead_dino_bitMap, 26, 25);
     updateDisplay();
-    clear_buffer();
     alive = 0;
+    systickDelayMs(1500);
+    show_retry(gg, y);
     restart_game();
 }
 
@@ -194,8 +201,8 @@ void game(){
 }
 
 
+
 void restart_game(){
-    systickDelayMs(1500);
     while(!isbutton_clicked());
     alive = 1;
     systickDelayMs(100);
