@@ -14,7 +14,18 @@ All project is done by modules. I2c.h is used for transmitting data and commands
 ## How to run code
 1. Download the code from this repository and open it in stm32CubeIDE
 2. Check all wiring!
-3. Run the code on your microcontroller :)
+3. If you are using platfromio and as the board blackpill v.2.0 put in platformio.ini file this:
+```
+[env:blackpill_f411ce]
+platform = ststm32
+board = blackpill_f411ce
+framework = stm32cube
+upload_protocol = dfu
+```
+4. Run the code on your microcontroller :)
+
+## Gameplay
+After burning the board with code please reset it. Than there will be an intro for 1.2 seconds, and after you can play the dino game :) After death you should wait for 1.5 seconds and then you can respawn by clicking user button(button that is used for jumping).
 
 ## Screens
 ![IMG_3260 (1)](https://github.com/user-attachments/assets/18e70cb2-4bcf-48c3-ac7d-1bf50a464982)![IMG_3260 (2)](https://github.com/user-attachments/assets/8246c523-676a-4e4e-b7c4-e23afcda3287)
